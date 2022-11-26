@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="mysticstyle.css"/>
+		<script src="../jquery-3.3.1.js"/> </script>
+		<script>
+		function getPrediction() {
+	var signWanted = $("#sign").val()
+	 $("#displaysign").html(signWanted)
+	 $("#prediction").load("http://10.40.2.17/getPrediction.php", {"sign":signWanted})
+}
+        
+       function savePrediction() {
+	   var signTachange = $("#sign").val()
+	   var sendPrediction = $.trim($("#newPrediction").val())
+	    $("#outputMessage").load("http://10.40.2.17/savePrediction.php", {"sign":signTachange,"prediction":
+		sendPrediction})
+}
+		
+	   
+	   
+		</script>
+	</head>
+	<body>
+		<h1>Mystic Mick's Psychic Horoscope</h1>
+		<h2>Choose sign</h2>
+		<select id="sign">
+			<option value="None">Select your sign</option>
+			<option value="Aries">Aries</option>
+			<option value="Taurus">Taurus</option>
+			<option value="Gemini">Gemini</option>
+			<option value="Cancer">Cancer</option>
+			<option value="Leo">Leo</option>
+			<option value="Scorpio">Scorpio</option>
+			<option value="Sagittarius">Sagittarius</option>
+			<option value="Capricorn">Capricorn</option>
+		</select>
+		   <h2>Get a prodiction</h2>
+		
+              <p><button onclick="getPrediction()">Get Prediction</button> 
+		
+		<div id="displaysign">
+		</div>
+		<div id="prediction">
+		</div>
+	        <h3>Update a prediction</h3>
+	
+	    <p><textarea id="newPrediction" rows=5 cols = 80 maxlength = 250 ></textarea>
+		
+		<h4>Autor</h4> 
+		    <p><button onclick="Enter Name()">Save Prediction</button>
+           
+		     
+			 <p><button onclick="savePrediction()">Save Prediction</button>
+			 
+			
+		<div id="outputMessage">
+		</div>	 
+			 
+	</body>
+</html>
